@@ -1,0 +1,52 @@
+// work by Matthew Jayd F. Baldonado
+// Code is for GDGRAP1
+
+#include <iostream>
+#include <GLFW/glfw3.h>
+
+int main(void)
+{
+    GLFWwindow* window;
+
+    /* Initialize the library */
+    if (!glfwInit())
+        return -1;
+
+    /* Create a windowed mode window and its OpenGL context */
+    window = glfwCreateWindow(800, 800, "Matthew Jayd Baldonado", NULL, NULL);
+    if (!window)
+    {
+        glfwTerminate();
+        return -1;
+    }
+
+    /* Make the window's context current */
+    glfwMakeContextCurrent(window);
+
+    /* Loop until the user closes the window */
+    while (!glfwWindowShouldClose(window))
+    {
+        /* Render here */
+        glClear(GL_COLOR_BUFFER_BIT);
+
+        glBegin(GL_POLYGON);
+
+        glVertex2f(0.309f, 0.951f);  // bottom left
+        glVertex2f(-0.809f, 0.587f);   // bottom right
+        glVertex2f(-0.809f, -0.587f);    // middle right
+        glVertex2f(0.309f, -0.951f);    // top
+        glVertex2f(1.00f, 0.00f);   // middle left
+
+        glEnd();
+
+
+        /* Swap front and back buffers */
+        glfwSwapBuffers(window);
+
+        /* Poll for and process events */
+        glfwPollEvents();
+    }
+
+    glfwTerminate();
+    return 0;
+}
